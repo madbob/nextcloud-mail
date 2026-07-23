@@ -105,7 +105,6 @@ class ImapMessageFetcherIntegrationTest extends TestCase {
 
 		$flags = $message->getFlags();
 		$this->assertTrue($flags['hasAttachments']);
-
 	}
 
 	public function testFetchMessageWithEncryptedUnverifiedMessage(): void {
