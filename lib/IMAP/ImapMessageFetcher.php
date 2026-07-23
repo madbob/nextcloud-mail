@@ -150,6 +150,8 @@ class ImapMessageFetcher {
 				}
 			}
 
+			$this->hasAnyAttachment = $this->hasAttachments($structure);
+
 			$isEncrypted = $this->smimeService->isEncrypted($fetch);
 			$isOpaqueSigned = $structure->getContentTypeParameter('smime-type') === 'signed-data'
 				&& ($structure->getType() === 'application/pkcs7-mime'
@@ -203,8 +205,6 @@ class ImapMessageFetcher {
 					'forcemime' => true,
 				]);
 			}
-
-			$this->hasAnyAttachment = $this->hasAttachments($structure);
 
 			$structure_type = $structure->getPrimaryType();
 			if ($structure_type === 'multipart') {
